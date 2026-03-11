@@ -12,6 +12,8 @@ from app.api.routes.auth import router as auth_router
 from app.api.schemas.auth import RegisterResponse
 import app.domain.models 
 from app.api.routes.workflows import router as workflow_router
+from app.api.routes.prompt_blocks import router as prompt_block_router
+from app.api.routes.executions import router as execution_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -29,6 +31,8 @@ app = FastAPI(
 )
 app.include_router(auth_router)
 app.include_router(workflow_router)
+app.include_router(prompt_block_router)
+app.include_router(execution_router)
 
 @app.get("/")
 async def root():
