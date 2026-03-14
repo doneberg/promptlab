@@ -14,6 +14,7 @@ import app.domain.models
 from app.api.routes.workflows import router as workflow_router
 from app.api.routes.prompt_blocks import router as prompt_block_router
 from app.api.routes.executions import router as execution_router
+from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -28,6 +29,13 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="PromptLab API",
     lifespan=lifespan,
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 app.include_router(auth_router)
 app.include_router(workflow_router)
