@@ -88,3 +88,15 @@ python -m http.server 3000
 Runs on: `http://localhost:3000`
 
 PromptLab is designed as a foundation for a scalable AI workflow platform.
+
+## AI Provider Options
+
+PromptLab supports pluggable AI providers:
+
+- OpenAI (cloud)
+- Ollama (local on‑prem)
+- Mock provider (development)
+
+Switch provider via environment variable:
+
+AI_PROVIDER=openai | ollama | mock
